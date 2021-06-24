@@ -1,0 +1,60 @@
+<!DOCTYPE html><!--
+	Copyright (c) 2014-2021, CKSource - Frederico Knabben. All rights reserved.
+	This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+
+<html lang="en" dir="ltr"></html>
+<head>
+	<title>CKEditor 5 ClassicEditor build</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+
+					<div class="editor">
+						
+					</div>
+			
+		
+
+
+	<script src="../build/ckeditor.js"></script>
+	<script>ClassicEditor
+			.create( document.querySelector( '.editor' ), {
+				
+				toolbar: {
+					items: [
+						'bold',
+						'italic',
+						'numberedList',
+						'|',
+						'strikethrough',
+						'specialCharacters',
+						'undo',
+						'redo'
+					]
+				},
+				language: 'en',
+				licenseKey: '',
+				
+				
+				
+			} )
+			.then( editor => {
+				window.editor = editor;
+		
+				
+				
+				
+			} )
+			.catch( error => {
+				console.error( 'Oops, something went wrong!' );
+				console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+				console.warn( 'Build id: pmx4yvdjalhf-y97dsflr6i51' );
+				console.error( error );
+			} );
+	</script>
+</body>
