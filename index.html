@@ -114,8 +114,8 @@
         }
 
         .ck-editor__editable_inline {
-            min-height: 300px;
-            max-height: 300px;
+            min-height: 350px;
+            max-height: 350px;
         }
 
         /* mobile ui start  */
@@ -216,7 +216,7 @@
     <script src="js/jquery.copy-to-clipboard.js"></script>
     <script>ClassicEditor
             .create(document.querySelector('.editor'), {
-
+                placeholder: 'Type the content here!',
                 toolbar: {
                     items: [
                         'bold',
@@ -231,9 +231,6 @@
                 },
                 language: 'en',
                 licenseKey: '',
-
-
-
             })
             .then(editor => {
                 window.editor = editor;
@@ -244,10 +241,8 @@
                 console.warn('Build id: pmx4yvdjalhf-y97dsflr6i51');
                 console.error(error);
             });
-        // Assuming there is a <button id="submit">Submit</button> in your application.
         document.querySelector('#submit').addEventListener('click', () => {
             const editorData = editor.getData();
-            console.log(editorData);
             var msg = editorData;
             msg = msg.replaceAll('<p>', '');
             msg = msg.replaceAll('</p>', '&#13;&#10;');
