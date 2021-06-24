@@ -55,7 +55,7 @@
         body {
 
             background: #d8dbd6;
-            
+
         }
 
         .toppanel {
@@ -102,6 +102,22 @@
             width: 80px;
         }
 
+        /* mobile ui end  */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            line-height: 40px;
+            /* Vertically center the text there */
+            background-color: #f5f5f5;
+        }
+
+        .ck-editor__editable_inline {
+            min-height: 300px;
+            max-height: 300px;
+        }
+
         /* mobile ui start  */
         @media only screen and (max-width: 991px) {
             .headingText {
@@ -130,15 +146,10 @@
             .settext {
                 padding: 1rem;
             }
-        }
 
-        /* mobile ui end  */
-        .footer {
-
-            /* Set the fixed height of the footer here */
-            line-height: 40px;
-            /* Vertically center the text there */
-            background-color: #f5f5f5;
+            .footer {
+                position: relative;
+            }
         }
     </style>
 </head>
@@ -148,8 +159,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1 class="text-center headingText"><span><img src="images/wh.png" class="setImage"></span><span
-                            class="font-weight-bold">Whatsapp</span> Messages Styler</h1>
+                    <h1 class="text-center headingText text-white"><span><img src="images/wh.png"
+                                class="setImage"></span><span class="font-weight-bold">Whatsapp</span> Messages Styler
+                    </h1>
                 </div>
             </div>
         </div>
@@ -158,10 +170,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 shadow bg-white rounded py-4 tcode">
-                    <div id="editor" class="py-5 px-3 editor">                        
-                    </div>
+                    <form>
+                        <div id="editor" class="py-5 px-3 editor">
+                        </div>
+                    </form>
                     <div class="d-flex justify-content-center">
-                        <button id="set" class="btn btn-success btn-lg mt-3 text-center w-100">Convert Now</button>
+                        <button id="submit" class="btn btn-success btn-lg mt-3 text-center w-100">Convert Now</button>
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 rounded shadow tcopy"
@@ -199,178 +213,173 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="ck/build/ckeditor.js"></script>
-	<script>ClassicEditor
-			.create( document.querySelector( '.editor' ), {
-				
-				toolbar: {
-					items: [
-						'bold',
-						'italic',
-						'numberedList',
-						'|',
-						'strikethrough',
-						'specialCharacters',
-						'undo',
-						'redo'
-					]
-				},
-				language: 'en',
-				licenseKey: '',
-				
-				
-				
-			} )
-			.then( editor => {
-				window.editor = editor;
-		
-				
-				
-				
-			} )
-			.catch( error => {
-				console.error( 'Oops, something went wrong!' );
-				console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-				console.warn( 'Build id: pmx4yvdjalhf-y97dsflr6i51' );
-				console.error( error );
-			} );
-	</script>
     <script src="js/jquery.copy-to-clipboard.js"></script>
-    <!-- <script>
-        (function () {
-            let editor = new FroalaEditor('div#edit', {
-                height: 200,
-                toolbarButtons: [
-                    ['bold', 'italic', 'strikeThrough', 'formatOL'],
-                    ['specialCharacters', 'spellChecker', 'selectAll', 'html', 'print', 'getPDF'],
-                    ['undo', 'redo', 'fullscreen']
-                ],
-                quickInsertButtons: ['ol'],
-            }, function () {
-                $('#set').click(function () {
-                    var msg = editor.html.get();
-                    msg = msg.replaceAll('<p>', '');
-                    msg = msg.replaceAll('</p>', '&#13;&#10;');
-                    msg = msg.replaceAll('<strong>', '*');
-                    msg = msg.replaceAll('</strong>', '*');
-                    msg = msg.replaceAll('<em>', '_');
-                    msg = msg.replaceAll('</em>', '_');
-                    msg = msg.replaceAll('<s>', '~');
-                    msg = msg.replaceAll('</s>', '~');
-                    msg = msg.replaceAll('<ol>', '');
-                    msg = msg.replaceAll('</ol>', '');
-                    msg = msg.replaceAll('<br>', '&#13;&#10;');
+    <script>ClassicEditor
+            .create(document.querySelector('.editor'), {
 
-                    function romanize(num) {
-                        var lookup = {
-                                M: 1000,
-                                CM: 900,
-                                D: 500,
-                                CD: 400,
-                                C: 100,
-                                XC: 90,
-                                L: 50,
-                                XL: 40,
-                                X: 10,
-                                IX: 9,
-                                V: 5,
-                                IV: 4,
-                                I: 1
-                            },
-                            roman = '',
-                            i;
-                        for (i in lookup) {
-                            while (num >= lookup[i]) {
-                                roman += i;
-                                num -= lookup[i];
-                            }
-                        }
-                        return roman;
-                    }
+                toolbar: {
+                    items: [
+                        'bold',
+                        'italic',
+                        'numberedList',
+                        '|',
+                        'strikethrough',
+                        'specialCharacters',
+                        'undo',
+                        'redo'
+                    ]
+                },
+                language: 'en',
+                licenseKey: '',
 
-                    function romanizeSmall(num) {
-                        var lookup = {
-                                m: 1000,
-                                cm: 900,
-                                d: 500,
-                                cd: 400,
-                                c: 100,
-                                xc: 90,
-                                l: 50,
-                                xl: 40,
-                                x: 10,
-                                ix: 9,
-                                v: 5,
-                                iv: 4,
-                                i: 1
-                            },
-                            roman = '',
-                            i;
-                        for (i in lookup) {
-                            while (num >= lookup[i]) {
-                                roman += i;
-                                num -= lookup[i];
-                            }
-                        }
-                        return roman;
-                    }
-                    if ((msg.includes('<ol style="list-style-type: lower-alpha;">'))) {
-                        msg = msg.replaceAll('<ol style="list-style-type: lower-alpha;">', '');
-                        var total_list = (msg.match(/<li>/g) || []).length;
-                        for (var i = 1; i <= total_list; i++) {
-                            var res = String.fromCharCode(96 + i);
-                            msg = msg.replace('<li>', '*' + res + '.* ');
-                            msg = msg.replace('</li>', '&#13;&#10;');
-                        }
-                    } else if ((msg.includes('<ol style="list-style-type: upper-alpha;">'))) {
-                        msg = msg.replaceAll('<ol style="list-style-type: upper-alpha;">', '');
-                        var total_list = (msg.match(/<li>/g) || []).length;
-                        for (var i = 1; i <= total_list; i++) {
-                            var res = String.fromCharCode(64 + i);
-                            msg = msg.replace('<li>', '*' + res + '.* ');
-                            msg = msg.replace('</li>', '&#13;&#10;');
-                        }
-                    } else if (msg.includes('<ol style="list-style-type: lower-greek;">')) {
-                        msg = msg.replaceAll('<ol style="list-style-type: lower-greek;">', '');
-                        var total_list = (msg.match(/<li>/g) || []).length;
-                        for (var i = 1; i <= total_list; i++) {
-                            msg = msg.replace('<li>', '*' + i + '.* ');
-                            msg = msg.replace('</li>', '&#13;&#10;');
-                        }
-                    } else if ((msg.includes('<ol style="list-style-type: lower-roman;">'))) {
-                        msg = msg.replaceAll('<ol style="list-style-type: lower-roman;">', '');
-                        var total_list = (msg.match(/<li>/g) || []).length;
-                        for (var i = 1; i <= total_list; i++) {
-                            msg = msg.replace('<li>', '*' + romanizeSmall(i) + '.* ');
-                            msg = msg.replace('</li>', '&#13;&#10;');
-                        }
 
-                    } else if ((msg.includes('<ol style="list-style-type: upper-roman;">'))) {
-                        msg = msg.replaceAll('<ol style="list-style-type: upper-roman;">', '');
-                        var total_list = (msg.match(/<li>/g) || []).length;
-                        for (var i = 1; i <= total_list; i++) {
-                            msg = msg.replace('<li>', '*' + romanize(i) + '.* ');
-                            msg = msg.replace('</li>', '&#13;&#10;');
-                        }
 
-                    } else {
-                        var total_list = (msg.match(/<li>/g) || []).length;
-                        for (var i = 1; i <= total_list; i++) {
-                            msg = msg.replace('<li>', '*' + i + '.* ');
-                            msg = msg.replace('</li>', '&#13;&#10;');
-                        }
-                    }
-                    $('#msg').html(msg);
-                });
+            })
+            .then(editor => {
+                window.editor = editor;
+
+            }).catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+                console.warn('Build id: pmx4yvdjalhf-y97dsflr6i51');
+                console.error(error);
             });
-        })();
+        // Assuming there is a <button id="submit">Submit</button> in your application.
+        document.querySelector('#submit').addEventListener('click', () => {
+            const editorData = editor.getData();
+            console.log(editorData);
+            var msg = editorData;
+            msg = msg.replaceAll('<p>', '');
+            msg = msg.replaceAll('</p>', '&#13;&#10;');
+            msg = msg.replaceAll('<strong>', '*');
+            msg = msg.replaceAll('</strong>', '*');
+            msg = msg.replaceAll('<i>', '_');
+            msg = msg.replaceAll('</i>', '_');
+            msg = msg.replaceAll('<s>', '~');
+            msg = msg.replaceAll('</s>', '~');
+            msg = msg.replaceAll('<ol>', '');
+            msg = msg.replaceAll('</ol>', '');
+            msg = msg.replaceAll('<br>', '&#13;&#10;');
+
+            function romanize(num) {
+                var lookup = {
+                    M: 1000,
+                    CM: 900,
+                    D: 500,
+                    CD: 400,
+                    C: 100,
+                    XC: 90,
+                    L: 50,
+                    XL: 40,
+                    X: 10,
+                    IX: 9,
+                    V: 5,
+                    IV: 4,
+                    I: 1
+                },
+                    roman = '',
+                    i;
+                for (i in lookup) {
+                    while (num >= lookup[i]) {
+                        roman += i;
+                        num -= lookup[i];
+                    }
+                }
+                return roman;
+            }
+
+            function romanizeSmall(num) {
+                var lookup = {
+                    m: 1000,
+                    cm: 900,
+                    d: 500,
+                    cd: 400,
+                    c: 100,
+                    xc: 90,
+                    l: 50,
+                    xl: 40,
+                    x: 10,
+                    ix: 9,
+                    v: 5,
+                    iv: 4,
+                    i: 1
+                },
+                    roman = '',
+                    i;
+                for (i in lookup) {
+                    while (num >= lookup[i]) {
+                        roman += i;
+                        num -= lookup[i];
+                    }
+                }
+                return roman;
+            }
+            function minTwoDigits(n) {
+                return (n < 10 ? '0' : '') + n;
+            }
+            if ((msg.includes('<ol style="list-style-type:lower-latin;">'))) {
+                msg = msg.replaceAll('<ol style="list-style-type:lower-latin;">', '');
+                var total_list = (msg.match(/<li>/g) || []).length;
+                for (var i = 1; i <= total_list; i++) {
+                    var res = String.fromCharCode(96 + i);
+                    msg = msg.replace('<li>', '*' + res + '.* ');
+                    msg = msg.replace('</li>', '&#13;&#10;');
+                }
+            } else if ((msg.includes('<ol style="list-style-type:upper-latin;">'))) {
+                msg = msg.replaceAll('<ol style="list-style-type:upper-latin;">', '');
+                var total_list = (msg.match(/<li>/g) || []).length;
+                for (var i = 1; i <= total_list; i++) {
+                    var res = String.fromCharCode(64 + i);
+                    msg = msg.replace('<li>', '*' + res + '.* ');
+                    msg = msg.replace('</li>', '&#13;&#10;');
+                }
+            } else if (msg.includes('<ol style="list-style-type:decimal-leading-zero;">')) {
+                msg = msg.replaceAll('<ol style="list-style-type:decimal-leading-zero;">', '');
+                var total_list = (msg.match(/<li>/g) || []).length;
+                for (var i = 1; i <= total_list; i++) {
+                    msg = msg.replace('<li>', '*' + minTwoDigits(i) + '.* ');
+                    msg = msg.replace('</li>', '&#13;&#10;');
+                }
+            } else if ((msg.includes('<ol style="list-style-type:lower-roman;">'))) {
+                msg = msg.replaceAll('<ol style="list-style-type:lower-roman;">', '');
+                var total_list = (msg.match(/<li>/g) || []).length;
+                for (var i = 1; i <= total_list; i++) {
+                    msg = msg.replace('<li>', '*' + romanizeSmall(i) + '.* ');
+                    msg = msg.replace('</li>', '&#13;&#10;');
+                }
+
+            } else if ((msg.includes('<ol style="list-style-type:upper-roman;">'))) {
+                msg = msg.replaceAll('<ol style="list-style-type:upper-roman;">', '');
+                var total_list = (msg.match(/<li>/g) || []).length;
+                for (var i = 1; i <= total_list; i++) {
+                    msg = msg.replace('<li>', '*' + romanize(i) + '.* ');
+                    msg = msg.replace('</li>', '&#13;&#10;');
+                }
+
+            } else if ((msg.includes('<ol style="list-style-type:decimal;">'))) {
+                msg = msg.replaceAll('<ol style="list-style-type:decimal;">', '');
+                var total_list = (msg.match(/<li>/g) || []).length;
+                for (var i = 1; i <= total_list; i++) {
+                    msg = msg.replace('<li>', '*' + i + '.* ');
+                    msg = msg.replace('</li>', '&#13;&#10;');
+                }
+            } else {
+                var total_list = (msg.match(/<li>/g) || []).length;
+                for (var i = 1; i <= total_list; i++) {
+                    msg = msg.replace('<li>', '*' + i + '.* ');
+                    msg = msg.replace('</li>', '&#13;&#10;');
+                }
+            }
+            $('#msg').html(msg);
+
+        });
         $(document).ready(function () {
             $('#copy').click(function () {
                 $(this).CopyToClipboard();
                 $('#copy').css('color', 'green');
             });
-            $('#fr-logo').css('display', 'none');
         });
-    </script> -->
+    </script>
 </body>
 
 </html>
