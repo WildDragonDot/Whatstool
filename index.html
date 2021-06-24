@@ -259,6 +259,7 @@
             msg = msg.replaceAll('</s>', '~');
             msg = msg.replaceAll('<ol>', '');
             msg = msg.replaceAll('</ol>', '');
+            msg = msg.replaceAll('&nbsp;', '');
             msg = msg.replaceAll('<br>', '&#13;&#10;');
 
             function romanize(num) {
