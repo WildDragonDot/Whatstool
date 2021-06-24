@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/froala_editor.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section id="editor">
+        <div id="edit">
+            Your editable content goes here
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/froala_editor.min.js"></script>
+    <script>
+        $(function(){
+        $('#edit').editable({
+        autosave: false, // Enable autosave option. Enabling autosave helps preventing data loss.
+        autosaveInterval: 1000, // Time in milliseconds to define when the autosave should be triggered. 
+        saveURL: null, // Defines where to post the data when save is triggered. The editor will initialize a POST request to the specified URL passing the editor content in the body parameter of the HTTP request.
+        blockTags: ["n", "p", "blockquote", "pre", "h1", "h2", "h3", "h4", "h5", "h6"], // Defines what tags list to format a paragraph and their order. 
+        borderColor: "#252528", // Customize the appearance of the editor by changing the border color.
+        buttons: ["bold", "italic", "underline", "strikeThrough", "fontSize", "color", "sep", "formatBlock", "align", "insertOrderedList", "insertUnorderedList", "outdent", "indent", "sep", "selectAll", "createLink", "insertImage", "undo", "redo", "html"], // Defines the list of buttons that are available in the editor. 
+        crossDomain: false, // Make AJAX requests using CORS. 
+        direction: "ltr", // Sets the direction of the text.
+        editorClass: "", // Set a custom class for the editor element.
+        height: "auto", // Set a custom height for the editor element.
+        imageMargin: 20, // Define a custom margin for image. It will be visible on the margin of the image when float left or right is active.
+        imageErrorCallback: false,
+        imageUploadParam: "file", // Customize the name of the param that has the image file in the upload request.
+        imageUploadURL: "http://uploads.im/api", // A custom URL where to save the uploaded image.
+        inlineMode: true, // Enable or disable inline mode.
+        placeholder: "Type something", // Set a custom placeholder to be used when the editor body is empty.
+        shortcuts: true, // Enable shortcuts. The shortcuts are visible when you hover a button in the editor.
+        spellcheck: false, // Enables spellcheck.
+        typingTimer: 250, // Time in milliseconds to define how long the typing pause may be without the change to be saved in the undo stack.
+        width: "auto" // Set a custom width for the editor element.
+        })
+        });
+        </script>
+</body>
+
+</html>

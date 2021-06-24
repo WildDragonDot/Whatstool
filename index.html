@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Enter a proper page title here -->
+    <title>Whatstool | A small font tool for whatsapp</title>
+
+    <!-- CSS to include bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- css to include style.css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- required meta tags essential for seo and link sharing -->
+
+    <!-- Enter a proper description for the page in the meta description tag -->
+    <meta name="description" content="Whatstool | A small font tool for whatsapp">
+
+    <!-- Enter a keywords for the page in tag -->
+    <meta name="Keywords" content="Whatstool,Whatsapp">
+
+    <!-- Enter Page title -->
+    <meta property="og:title" content="Whatstool | A small font tool for whatsapp" />
+
+    <!-- Enter Page URL -->
+    <meta property="og:url" content="ENTER_PAGE_URL" />
+
+    <!-- Enter page description -->
+    <meta property="og:description" content="Whatstool | A small font tool for whatsapp">
+
+    <!-- Enter Logo image URL for example : http://cryptonite.finstreet.in/images/cryptonitepost.png -->
+    <meta property="og:image" itemprop="image" content="ENTER_IMAGE_URL" />
+    <meta property="og:image:secure_url" itemprop="image" content="ENTER_IMAGE_URL" />
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="315">
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon location for example :  images/cropped-Fin-270x270.jpg -->
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="froala/css/froala_editor.pkgd.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+    <style>
+        div#editor {
+            width: 100%;
+            margin: auto;
+            text-align: left;
+        }
+
+        .ss {
+            background-color: red;
+        }
+
+        body {
+
+            background: #d8dbd6;
+            color: #fff;
+        }
+
+        .toppanel {
+            background: #128C7E;
+
+        }
+
+        .settop {
+            z-index: 999;
+
+        }
+
+        .setback {
+            z-index: 0;
+        }
+
+        .bottompanel {
+            margin-top: -1%;
+        }
+
+        #copy {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: red;
+        }
+
+        #copy:hover {
+            transform: scale(1.2);
+            transition: all 0.5s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        .headingText {
+            padding: 3rem;
+        }
+
+        .tcode {
+            margin-left: 2rem;
+            margin-right: 2rem;
+        }
+
+        .setImage {
+            height: 80px;
+            width: 80px;
+        }
+
+        /* mobile ui start  */
+        @media only screen and (max-width: 991px) {
+            .headingText {
+                padding: 1rem;
+            }
+
+            #copy {
+                margin: 1rem;
+                font-size: 2rem;
+            }
+
+            .tcopy {
+                margin-top: 2rem;
+            }
+
+            .tcode {
+                margin-left: 0rem;
+                margin-right: 0rem;
+            }
+
+            .setImage {
+                height: 4rem;
+                width: 4rem;
+            }
+
+            .settext {
+                padding: 1rem;
+            }
+        }
+
+        /* mobile ui end  */
+        .footer {
+
+            /* Set the fixed height of the footer here */
+            line-height: 40px;
+            /* Vertically center the text there */
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toppanel">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center headingText"><span><img src="images/wh.png" class="setImage"></span><span
+                            class="font-weight-bold">Whatsapp</span> Messages Styler</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottompanel pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 shadow bg-white rounded pb-5 tcode">
+                    <div id="editor" class="py-5 px-3">
+                        <div id='edit'>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button id="set" class="btn btn-success btn-lg mt-3 text-center w-100">Convert Now</button>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 rounded shadow tcopy"
+                    style="background-color: aliceblue;color: #000;">
+                    <form>
+                        <div class="form-group">
+                            <label for="msg" class="text-center w-100">
+                                <h6 class="text-uppercase mt-3 settext">Copy from here and paste in Whatsapp App 👉<i
+                                        class="fa fa-file-text-o mx-2" data-clipboard-target="#msg" id="copy"></i></h6>
+                            </label>
+                            <textarea id="msg" class="fr-element fr-view form-control" rows="18"></textarea>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center py-2">
+                    <span class="text-muted">Copyright © 2021 All Right Reserved.</span>
+                    <span class="text-muted"> Developed By <a rel="nofollow" href="https://www.quadbtech.com"
+                            target="_blank" style="color:cornflowerblue !important">QuadBTech</a>
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.7/purify.min.js"></script>
+    <script src="froala/js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js">
+    </script>
+    <script src="js/jquery.copy-to-clipboard.js"></script>
+    <script>
+        (function () {
+            let editor = new FroalaEditor('div#edit', {
+                height: 200,
+                toolbarButtons: [
+                    ['bold', 'italic', 'strikeThrough', 'formatOL'],
+                    ['specialCharacters', 'spellChecker', 'selectAll', 'html', 'print', 'getPDF'],
+                    ['undo', 'redo', 'fullscreen']
+                ],
+                quickInsertButtons: ['ol'],
+            }, function () {
+                $('#set').click(function () {
+                    var msg = editor.html.get();
+                    msg = msg.replaceAll('<p>', '');
+                    msg = msg.replaceAll('</p>', '&#13;&#10;');
+                    msg = msg.replaceAll('<strong>', '*');
+                    msg = msg.replaceAll('</strong>', '*');
+                    msg = msg.replaceAll('<em>', '_');
+                    msg = msg.replaceAll('</em>', '_');
+                    msg = msg.replaceAll('<s>', '~');
+                    msg = msg.replaceAll('</s>', '~');
+                    msg = msg.replaceAll('<ol>', '');
+                    msg = msg.replaceAll('</ol>', '');
+                    msg = msg.replaceAll('<br>', '&#13;&#10;');
+
+                    function romanize(num) {
+                        var lookup = {
+                                M: 1000,
+                                CM: 900,
+                                D: 500,
+                                CD: 400,
+                                C: 100,
+                                XC: 90,
+                                L: 50,
+                                XL: 40,
+                                X: 10,
+                                IX: 9,
+                                V: 5,
+                                IV: 4,
+                                I: 1
+                            },
+                            roman = '',
+                            i;
+                        for (i in lookup) {
+                            while (num >= lookup[i]) {
+                                roman += i;
+                                num -= lookup[i];
+                            }
+                        }
+                        return roman;
+                    }
+
+                    function romanizeSmall(num) {
+                        var lookup = {
+                                m: 1000,
+                                cm: 900,
+                                d: 500,
+                                cd: 400,
+                                c: 100,
+                                xc: 90,
+                                l: 50,
+                                xl: 40,
+                                x: 10,
+                                ix: 9,
+                                v: 5,
+                                iv: 4,
+                                i: 1
+                            },
+                            roman = '',
+                            i;
+                        for (i in lookup) {
+                            while (num >= lookup[i]) {
+                                roman += i;
+                                num -= lookup[i];
+                            }
+                        }
+                        return roman;
+                    }
+                    if ((msg.includes('<ol style="list-style-type: lower-alpha;">'))) {
+                        msg = msg.replaceAll('<ol style="list-style-type: lower-alpha;">', '');
+                        var total_list = (msg.match(/<li>/g) || []).length;
+                        for (var i = 1; i <= total_list; i++) {
+                            var res = String.fromCharCode(96 + i);
+                            msg = msg.replace('<li>', '*' + res + '.* ');
+                            msg = msg.replace('</li>', '&#13;&#10;');
+                        }
+                    } else if ((msg.includes('<ol style="list-style-type: upper-alpha;">'))) {
+                        msg = msg.replaceAll('<ol style="list-style-type: upper-alpha;">', '');
+                        var total_list = (msg.match(/<li>/g) || []).length;
+                        for (var i = 1; i <= total_list; i++) {
+                            var res = String.fromCharCode(64 + i);
+                            msg = msg.replace('<li>', '*' + res + '.* ');
+                            msg = msg.replace('</li>', '&#13;&#10;');
+                        }
+                    } else if (msg.includes('<ol style="list-style-type: lower-greek;">')) {
+                        msg = msg.replaceAll('<ol style="list-style-type: lower-greek;">', '');
+                        var total_list = (msg.match(/<li>/g) || []).length;
+                        for (var i = 1; i <= total_list; i++) {
+                            msg = msg.replace('<li>', '*' + i + '.* ');
+                            msg = msg.replace('</li>', '&#13;&#10;');
+                        }
+                    } else if ((msg.includes('<ol style="list-style-type: lower-roman;">'))) {
+                        msg = msg.replaceAll('<ol style="list-style-type: lower-roman;">', '');
+                        var total_list = (msg.match(/<li>/g) || []).length;
+                        for (var i = 1; i <= total_list; i++) {
+                            msg = msg.replace('<li>', '*' + romanizeSmall(i) + '.* ');
+                            msg = msg.replace('</li>', '&#13;&#10;');
+                        }
+
+                    } else if ((msg.includes('<ol style="list-style-type: upper-roman;">'))) {
+                        msg = msg.replaceAll('<ol style="list-style-type: upper-roman;">', '');
+                        var total_list = (msg.match(/<li>/g) || []).length;
+                        for (var i = 1; i <= total_list; i++) {
+                            msg = msg.replace('<li>', '*' + romanize(i) + '.* ');
+                            msg = msg.replace('</li>', '&#13;&#10;');
+                        }
+
+                    } else {
+                        var total_list = (msg.match(/<li>/g) || []).length;
+                        for (var i = 1; i <= total_list; i++) {
+                            msg = msg.replace('<li>', '*' + i + '.* ');
+                            msg = msg.replace('</li>', '&#13;&#10;');
+                        }
+                    }
+                    $('#msg').html(msg);
+                });
+            });
+        })();
+        $(document).ready(function () {
+            $('#copy').click(function () {
+                $(this).CopyToClipboard();
+                $('#copy').css('color', 'green');
+            });
+            $('#fr-logo').css('display', 'none');
+        });
+    </script>
+</body>
+
+</html>
