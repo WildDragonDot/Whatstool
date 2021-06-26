@@ -243,30 +243,142 @@
             });
         document.querySelector('#submit').addEventListener('click', () => {
             const editorData = editor.getData();
-            // console.log(editorData);
+            console.log(editorData);
             var msg = editorData;
             msg = msg.replaceAll('<p>', '');
-            msg = msg.replaceAll('</p>', '&#13;&#10;');
-            if ((msg.includes(('<strong> ')) || ('<strong>  '))) {
+            msg = msg.replaceAll('</p>', '&#13;&#10;');            
+            //test start
+            if((msg.includes((' &nbsp;')))){
+                msg = msg.replaceAll(' &nbsp;', '&nbsp');
+            }
+            // for start tag 
+            if ((msg.includes(('<strong><i><s> ') || ('<strong><s><i> ') || ('<i><s><strong> ') || ('<i><strong><s> ') || ('<s><strong><i> ') || ('<s><i><strong> ')))) {
+            msg = msg.replaceAll('<strong><i><s> ', ' <strong><i><s>');
+            msg = msg.replaceAll('<strong><s><i> ', ' <strong><s><i>');
+            msg = msg.replaceAll('<i><s><strong> ', ' <i><s><strong>');
+            msg = msg.replaceAll('<i><strong><s> ', ' <i><strong><s>');
+            msg = msg.replaceAll('<s><strong><i> ', ' <s><strong><i>');
+            msg = msg.replaceAll('<s><i><strong> ', ' <s><i><strong>');
+            }
+            if((msg.includes(('<strong><i> ') || ('<i><strong> ')))){
+                msg = msg.replaceAll('<strong><i> ', ' <strong><i>');
+                msg = msg.replaceAll('<i><strong> ', ' <i><strong>');
+            }
+            if((msg.includes(('<strong><s> ') || ('<s><strong> ')))){
+                msg = msg.replaceAll('<strong><s> ', ' <strong><s>');
+                msg = msg.replaceAll('<s><strong> ', ' <s><strong>');
+            }
+            if((msg.includes(('<i><s> ') || ('<s><i> ')))){
+                msg = msg.replaceAll('<i><s> ', ' <i><s>');
+                msg = msg.replaceAll('<s><i> ', ' <s><i>');
+            }
+            if ((msg.includes(('<strong><i><s>&nbsp;') || ('<strong><s><i>&nbsp;') || ('<i><s><strong>&nbsp;') || ('<i><strong><s>&nbsp;') || ('<s><strong><i>&nbsp;') || ('<s><i><strong>&nbsp;')))) {
+            msg = msg.replaceAll('<strong><i><s>&nbsp;', ' <strong><i><s>');
+            msg = msg.replaceAll('<strong><s><i>&nbsp;', ' <strong><s><i>');
+            msg = msg.replaceAll('<i><s><strong>&nbsp;', ' <i><s><strong>');
+            msg = msg.replaceAll('<i><strong><s>&nbsp;', ' <i><strong><s>');
+            msg = msg.replaceAll('<s><strong><i>&nbsp;', ' <s><strong><i>');
+            msg = msg.replaceAll('<s><i><strong>&nbsp;', ' <s><i><strong>');
+            }
+            if((msg.includes(('<strong><i>&nbsp;') || ('<i><strong>&nbsp;')))){
+                msg = msg.replaceAll('<strong><i>&nbsp;', ' <strong><i>');
+                msg = msg.replaceAll('<i><strong>&nbsp;', ' <i><strong>');
+            }
+            if((msg.includes(('<strong><s>&nbsp;') || ('<s><strong>&nbsp;')))){
+                msg = msg.replaceAll('<strong><s>&nbsp;', ' <strong><s>');
+                msg = msg.replaceAll('<s><strong>&nbsp;', ' <s><strong>');
+            }
+            if((msg.includes(('<i><s>&nbsp;') || ('<s><i>&nbsp;')))){
+                msg = msg.replaceAll('<i><s>&nbsp;', ' <i><s>');
+                msg = msg.replaceAll('<s><i>&nbsp;', ' <s><i>');
+            }
+
+            // for end tag 
+            if ((msg.includes((' </strong></i></s>') || (' </strong></s></i>') || (' </i><s/></strong>') || (' </i></strong></s>') || (' </s></strong></i>') || (' </s></i></strong>')))) {
+            msg = msg.replaceAll(' </strong></i></s>', '</strong></i></s> ');
+            msg = msg.replaceAll(' </strong></s></i>', '</strong></s></i> ');
+            msg = msg.replaceAll(' </i></s></strong>', '</i></s></strong> ');
+            msg = msg.replaceAll(' </i></strong></s>', '</i></strong></s> ');
+            msg = msg.replaceAll(' </s></strong></i>', '</s></strong></i> ');
+            msg = msg.replaceAll(' </s></i></strong>', '</s></i></strong> ');
+            }
+            if((msg.includes((' </strong></i>') || (' </i></strong>')))){
+                msg = msg.replaceAll(' </strong></i>', '</strong></i> ');
+                msg = msg.replaceAll(' </i></strong>', '</i></strong> ');
+            }
+            if((msg.includes((' </strong></s>') || (' </s></strong>')))){
+                msg = msg.replaceAll(' </strong></s>', '</strong><s> ');
+                msg = msg.replaceAll(' </s></strong>', '</s><strong> ');
+            }
+            if((msg.includes((' </i></s>') || (' </s></i>')))){
+                msg = msg.replaceAll(' </i></s>', '</i></s> ');
+                msg = msg.replaceAll(' </s></i>', '</s></i> ');
+            }
+            if ((msg.includes(('&nbsp;</strong></i></s>') || ('&nbsp;</strong></s></i>') || ('&nbsp;</i><s/></strong>') || ('&nbsp;</i></strong></s>') || ('&nbsp;</s></strong></i>') || ('&nbsp;</s></i></strong>')))) {
+            msg = msg.replaceAll('&nbsp;</strong></i></s>', '</strong></i></s> ');
+            msg = msg.replaceAll('&nbsp;</strong></s></i>', '</strong></s></i> ');
+            msg = msg.replaceAll('&nbsp;</i></s></strong>', '</i></s></strong> ');
+            msg = msg.replaceAll('&nbsp;</i></strong></s>', '</i></strong></s> ');
+            msg = msg.replaceAll('&nbsp;</s></strong></i>', '</s></strong></i> ');
+            msg = msg.replaceAll('&nbsp;</s></i></strong>', '</s></i></strong> ');
+            }
+            if((msg.includes(('&nbsp;</strong></i>') || ('&nbsp;</i></strong>')))){
+                msg = msg.replaceAll('&nbsp;</strong></i>', '</strong></i> ');
+                msg = msg.replaceAll('&nbsp;</i></strong>', '</i></strong> ');
+            }
+            if((msg.includes(('&nbsp;</strong></s>') || ('&nbsp;</s></strong>')))){
+                msg = msg.replaceAll('&nbsp;</strong></s>', '</strong><s> ');
+                msg = msg.replaceAll('&nbsp;</s></strong>', '</s><strong> ');
+            }
+            if((msg.includes(('&nbsp;</i></s>') || ('&nbsp;</s></i>')))){
+                msg = msg.replaceAll('&nbsp;</i></s>', '</i></s> ');
+                msg = msg.replaceAll('&nbsp;</s></i>', '</s></i> ');
+            }
+            //test end
+            if ((msg.includes(('<strong>&nbsp;') || ('<strong>&nbsp;&nbsp;')))) {
+            msg = msg.replaceAll('<strong>&nbsp;&nbsp;', '<strong>&nbsp;');
+            msg = msg.replaceAll('<strong>&nbsp;', ' <strong>');
+            }
+            if ((msg.includes(('<strong> ') || ('<strong>  ')))) {
             msg = msg.replaceAll('<strong>  ', '<strong> ');
             msg = msg.replaceAll('<strong> ', '<strong>');
             }
             if((msg.includes(('&nbsp;</strong>')))){
-                msg = msg.replaceAll('&nbsp;</strong>', '</strong>');
+                msg = msg.replaceAll('&nbsp;</strong>', '</strong> ');
             }
-            if ((msg.includes(('<i> ')) || ('<i>  '))) {
+            if ((msg.includes((' </strong>') || ('  </strong>')))) {
+            msg = msg.replaceAll('  </strong>', ' </strong>');
+            msg = msg.replaceAll(' </strong>', '</strong> ');
+            }
+            if ((msg.includes(('<i>&nbsp;') || ('<i>&nbsp;&nbsp;')))) {
+            msg = msg.replaceAll('<i>&nbsp;&nbsp;', '<i>&nbsp;');
+            msg = msg.replaceAll('<i>&nbsp;', '<i>');
+            }
+            if ((msg.includes(('<i> ') || ('<i>  ')))) {
             msg = msg.replaceAll('<i>  ', '<i> ');
             msg = msg.replaceAll('<i> ', '<i>');
             }
             if((msg.includes(('&nbsp;</i>')))){
-                msg = msg.replaceAll('&nbsp;</i>', '</i>');
+                msg = msg.replaceAll('&nbsp;</i>', '</i> ');
             }
-            if ((msg.includes(('<s> ')) || ('<s>  '))) {
+            if ((msg.includes((' </i>') || ('  </i>')))) {
+            msg = msg.replaceAll('  </i>', ' </i>');
+            msg = msg.replaceAll(' </i>', '</i> ');
+            }
+            if ((msg.includes(('<s>&nbsp;') || ('<s>&nbsp;&nbsp;')))) {
+            msg = msg.replaceAll('<s>&nbsp;&nbsp;', '<s>&nbsp;');
+            msg = msg.replaceAll('<s>&nbsp;', '<s>');
+            }
+            if ((msg.includes(('<s> ') || ('<s>  ')))) {
             msg = msg.replaceAll('<s>  ', '<s> ');
             msg = msg.replaceAll('<s> ', '<s>');
             }
             if((msg.includes(('&nbsp;</s>')))){
-                msg = msg.replaceAll('&nbsp;</s>', '</s>');
+                msg = msg.replaceAll('&nbsp;</s>', '</s> ');
+            }
+            if ((msg.includes((' </s>') || ('  </s>')))) {
+            msg = msg.replaceAll('  </s>', ' </s>');
+            msg = msg.replaceAll(' </s>', '</s> ');
             }
             msg = msg.replaceAll('<strong>', '*');
             msg = msg.replaceAll('</strong>', '*');
