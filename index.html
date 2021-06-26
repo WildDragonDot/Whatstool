@@ -243,9 +243,31 @@
             });
         document.querySelector('#submit').addEventListener('click', () => {
             const editorData = editor.getData();
+            console.log(editorData);
             var msg = editorData;
             msg = msg.replaceAll('<p>', '');
             msg = msg.replaceAll('</p>', '&#13;&#10;');
+            if ((msg.includes(('<strong> ')) || ('<strong>  '))) {
+            msg = msg.replaceAll('<strong>  ', '<strong> ');
+            msg = msg.replaceAll('<strong> ', '<strong>');
+            }
+            if((msg.includes(('&nbsp;</strong>')))){
+                msg = msg.replaceAll('&nbsp;</strong>', '</strong>');
+            }
+            if ((msg.includes(('<i> ')) || ('<i>  '))) {
+            msg = msg.replaceAll('<i>  ', '<i> ');
+            msg = msg.replaceAll('<i> ', '<i>');
+            }
+            if((msg.includes(('&nbsp;</i>')))){
+                msg = msg.replaceAll('&nbsp;</i>', '</i>');
+            }
+            if ((msg.includes(('<s> ')) || ('<s>  '))) {
+            msg = msg.replaceAll('<s>  ', '<s> ');
+            msg = msg.replaceAll('<s> ', '<s>');
+            }
+            if((msg.includes(('&nbsp;</s>')))){
+                msg = msg.replaceAll('&nbsp;</s>', '</s>');
+            }
             msg = msg.replaceAll('<strong>', '*');
             msg = msg.replaceAll('</strong>', '*');
             msg = msg.replaceAll('<i>', '_');
@@ -254,7 +276,7 @@
             msg = msg.replaceAll('</s>', '~');
             msg = msg.replaceAll('<ol>', '');
             msg = msg.replaceAll('</ol>', '');
-            msg = msg.replaceAll('&nbsp;', '');
+            msg = msg.replaceAll('&nbsp;', ' ');
             msg = msg.replaceAll('<br>', '&#13;&#10;');
 
             function romanize(num) {
