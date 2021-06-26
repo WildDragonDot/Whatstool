@@ -249,7 +249,7 @@
             msg = msg.replaceAll('</p>', '&#13;&#10;');            
             //test start
             if((msg.includes((' &nbsp;')))){
-                msg = msg.replaceAll(' &nbsp;', '&nbsp');
+                msg = msg.replaceAll(' &nbsp;', ' ');
             }
             // for start tag 
             if ((msg.includes(('<strong><i><s> ') || ('<strong><s><i> ') || ('<i><s><strong> ') || ('<i><strong><s> ') || ('<s><strong><i> ') || ('<s><i><strong> ')))) {
@@ -341,7 +341,7 @@
             }
             if ((msg.includes(('<strong> ') || ('<strong>  ')))) {
             msg = msg.replaceAll('<strong>  ', '<strong> ');
-            msg = msg.replaceAll('<strong> ', '<strong>');
+            msg = msg.replaceAll('<strong> ', ' <strong>');
             }
             if((msg.includes(('&nbsp;</strong>')))){
                 msg = msg.replaceAll('&nbsp;</strong>', '</strong> ');
@@ -356,7 +356,7 @@
             }
             if ((msg.includes(('<i> ') || ('<i>  ')))) {
             msg = msg.replaceAll('<i>  ', '<i> ');
-            msg = msg.replaceAll('<i> ', '<i>');
+            msg = msg.replaceAll('<i> ', ' <i>');
             }
             if((msg.includes(('&nbsp;</i>')))){
                 msg = msg.replaceAll('&nbsp;</i>', '</i> ');
@@ -371,7 +371,7 @@
             }
             if ((msg.includes(('<s> ') || ('<s>  ')))) {
             msg = msg.replaceAll('<s>  ', '<s> ');
-            msg = msg.replaceAll('<s> ', '<s>');
+            msg = msg.replaceAll('<s> ', ' <s>');
             }
             if((msg.includes(('&nbsp;</s>')))){
                 msg = msg.replaceAll('&nbsp;</s>', '</s> ');
